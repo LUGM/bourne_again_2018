@@ -1,0 +1,19 @@
+#!/usr/bin/expect
+
+# replace this
+set username "root" 
+# replace this
+set hostname "142.93.212.213" 
+# replace this
+set password "" 
+
+# one option is to use 127.0.0.1 as the hostname and your own 
+# username and password to login to your own system.
+
+spawn ssh $username@$hostname
+expect "*?password:*"
+send "$password\n"
+expect "# "
+send "cat /var/log/syslog\n"
+expect "# "
+send "exit\n"
